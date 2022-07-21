@@ -36,7 +36,7 @@ const destinationsDB = {
 
 // READ => DO THIS
 // GET /destinations => send back the whole db
-server.get("/destinations", (req, res) => {
+server.get("/", (req, res) => {
   res.send(destinationsDB);
 });
 
