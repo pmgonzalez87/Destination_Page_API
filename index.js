@@ -6,7 +6,7 @@ server.use(cors());
 
 //const PORT = process.env.PORT || 3000;
 let PORT;
-if (proecss.env.PORT !== undefined) {
+if (process.env.PORT !== undefined) {
   PORT = process.env.PORT;
 } else {
   PORT = 3000;
