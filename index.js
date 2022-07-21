@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+
 const server = express(); // This server is deaf
 
 server.use(cors());
