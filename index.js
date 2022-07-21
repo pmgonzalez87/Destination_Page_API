@@ -1,7 +1,13 @@
 const express = require("express");
 const server = express(); // This server is deaf
 
-const PORT = process.env.PORT || 3000;
+//const PORT = process.env.PORT || 3000;
+let PORT;
+if (proecss.env.PORT !== undefined) {
+  PORT = process.env.PORT;
+} else {
+  PORT = 3000;
+}
 
 server.listen(PORT, () => {
   consolole.log(`Listening on port: ${PORT}`);
