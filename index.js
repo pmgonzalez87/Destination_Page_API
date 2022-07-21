@@ -55,7 +55,7 @@ server.get("/destinations", (req, res) => {
 // localhost:3000/destinations/city/San Bernardino
 server.get("/destinations/city/:myCity", (req, res) => {
   // log the city passed in the url as a named route parameter
-  const city = req.query.city;
+  const city = req.params.city;
   filterDestinations({ city, destinationsDB, res });
 });
 
