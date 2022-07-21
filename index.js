@@ -10,7 +10,7 @@ if (proecss.env.PORT !== undefined) {
 }
 
 server.listen(PORT, () => {
-  consolole.log(`Listening on port: ${PORT}`);
+  console.log(`Listening on port: ${PORT}`);
 }); // Told the server to listen on port 3000
 
 const destinationsDB = {
