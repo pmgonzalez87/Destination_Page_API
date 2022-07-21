@@ -1,8 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { filterObj } from "./utils.js";
-
-console.log(`name export: ${filterObj}`);
+import { filterDestinations } from "./utils.js";
 
 const server = express(); // This server is deaf
 
@@ -49,17 +47,16 @@ const destinationsDB = {
 server.get("/destinations", (req, res) => {
   // TODO Check for a city query parameter
   const city = req.query.city;
-  // TODO if there is a city query parameter, filter destination by the city
-  if (city !== undefined) {
-    const filteredDests = filter({
-      objectToFilter: destinationsDB,
-      filterValue: city,
-    });
-    res.send(filteredDests);
-  } else {
-    // TODO otherwise just send the whole database
-    res.send(destinationsDB);
-  }
+
+  filterDestinations({ city, destinationsDB, res });
+});
+
+// GET /destinations/city/:myCity
+// localhost:3000/destinations/city/San Bernardino
+server.get("/destinations/city/:myCity", (req, res) => {
+  // log the city passed in the url as a named route parameter
+  const city = req.query.city;
+  filterDestinations({ city, destinationsDB, res });
 });
 
 // UPDATE (OPTIONAL)
