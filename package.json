@@ -8,6 +8,7 @@
   },
   "author": "Paul Gonzalez",
   "license": "ISC",
+  "type": "module",
   "keywords": [],
   "dependencies": {
     "cors": "^2.8.5",
