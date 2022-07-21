@@ -1,5 +1,8 @@
 import express from "express";
 import cors from "cors";
+import { filterObj } from "./utils.js";
+
+console.log(`name export: ${filterObj}`);
 
 const server = express(); // This server is deaf
 
@@ -17,12 +20,21 @@ server.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 }); // Told the server to listen on port 3000
 
+//READ => DO THIS
+// GET /destinations => send back the whole db
+// GET /descriptions/city=asfafs => send filtered locations by city
+// localhos:3000/destinations?city=london => only send back destinations whose location is London
 const destinationsDB = {
   123456: {
     destination: "Eiffel Tower",
     location: "Paris",
     photo:
       "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+  123457: {
+    destination: "Champs Elysee",
+    location: "Paris",
+    photo: "https://www.baume-hotel-paris.com/monuments/arcdetriomphe/",
   },
   234567: {
     destination: "Big Ben",
@@ -32,12 +44,22 @@ const destinationsDB = {
   },
 };
 
-// CREATE (OPTIONAL)
-
 // READ => DO THIS
 // GET /destinations => send back the whole db
 server.get("/destinations", (req, res) => {
-  res.send(destinationsDB);
+  // TODO Check for a city query parameter
+  const city = req.query.city;
+  // TODO if there is a city query parameter, filter destination by the city
+  if (city !== undefined) {
+    const filteredDests = filter({
+      objectToFilter: destinationsDB,
+      filterValue: city,
+    });
+    res.send(filteredDests);
+  } else {
+    // TODO otherwise just send the whole database
+    res.send(destinationsDB);
+  }
 });
 
 // UPDATE (OPTIONAL)
