@@ -18,8 +18,7 @@ export function filterDestinations({ city, destinationsDB, res }) {
       filterValue: city,
     });
     return res.send(filteredDests);
-  } else {
-    // TODO otherwise just send the whole database
-    return res.send(destinationsDB);
   }
+  // TODO otherwise just send the whole database
+  return res.send(destinationsDB);
 }
