@@ -4,7 +4,7 @@
 // using import keyword to import => we are importing ES module
 import express from "express";
 import cors from "cors";
-import { filterDestinations } from "./utils";
+import { filterDestinations } from "./utils.js";
 
 const server = express(); // This server is deaf
 
