@@ -11,6 +11,7 @@ function filterObj({ objectToFilter: obj, filterValue }) {
 }
 
 export function filterDestinations({ city, destinationsDB, res }) {
+  // TODO if there is a city query parameter, filter destination by the city
   if (city !== undefined) {
     const filteredDests = filterObj({
       objectToFilter: destinationsDB,
