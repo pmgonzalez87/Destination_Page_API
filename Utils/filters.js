@@ -19,6 +19,7 @@ export function filterDestinations({ city, destinationsDB, res }) {
     });
     return res.send(filteredDests);
   }
+
   // TODO otherwise just send the whole database
   return res.send(destinationsDB);
 }
